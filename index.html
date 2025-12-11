@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>謝慧雲 | Huiyun Xie - 数字艺术与书法作品集 (Digital Art & Calligraphy)</title>
+    
+    <meta name="description" content="谢慧云 (Huiyun Xie) 的个人作品集网站。专注探索传统书法与生成式 AI (Generative AI) 的结合，展示品牌视觉、产品包装与数字艺术创作。">
+    
+    <meta name="keywords" content="谢慧云, 謝慧雲, Huiyun Xie, 书法设计, AI艺术, 生成式AI, 包装设计, 品牌设计, Portfolio">
+    <meta name="author" content="Huiyun Xie">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Huiyun Xie",
+      "alternateName": ["谢慧云", "謝慧雲"],
+      "url": "https://huiyunxie.github.io",
+      "jobTitle": "Digital Artist",
+      "sameAs": [
+        "https://www.behance.net/", 
+        "https://www.instagram.com/",
+        "https://www.linkedin.com/"
+      ]
+    }
+    </script>
+    <script src="data.js"></script> 
+    
+    <style>
+        /* --- 1. 基础设定 --- */
+        :root { 
+            --bg: #ffffff; 
+            --text-main: #191919; 
+            --text-gray: #555555; 
+            --text-light: #999999; 
+        }
+
+        body { 
+            margin: 0; 
+            background: var(--bg); 
+            color: var(--text-main); 
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif; 
+            -webkit-font-smoothing: antialiased; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+
+        /* --- 2. 导航栏 --- */
+        nav { 
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 80px;
+            background: rgba(255,255,255,0.98); 
+            border-bottom: 1px solid #f6f6f6; 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 0 50px; box-sizing: border-box; z-index: 50; 
+        }
+        .brand { font-weight: 700; font-size: 18px; letter-spacing: -0.5px; }
+        .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; color: #333; }
+        .nav-links a:hover { color: #999; }
+
+        /* --- 3. 个人宣言 --- */
+        .intro-section { 
+            max-width: 1400px; margin: 160px auto 80px; padding: 0 50px; 
+        }
+        .intro-title {
+            font-size: clamp(32px, 3.5vw, 56px); font-weight: 700; line-height: 1.2; 
+            margin-bottom: 24px; letter-spacing: -1px; max-width: 900px;
+        }
+        .intro-desc {
+            font-size: 18px; color: var(--text-light); max-width: 720px; line-height: 1.6;
+        }
+
+        /* --- 4. 网格系统 --- */
+        .grid { 
+            max-width: 1440px; margin: 0 auto 120px; padding: 0 50px; 
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px 50px; 
+        }
+        .card { cursor: pointer; }
+        .cover-box { 
+            width: 100%; aspect-ratio: 4/3; background: #f8f8f8; 
+            border-radius: 4px; overflow: hidden; margin-bottom: 16px; 
+        }
+        .cover-box img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+        }
+        .card:hover .cover-box img { transform: scale(1.04); }
+        .title { font-weight: 600; font-size: 17px; margin-bottom: 6px; color: #333; }
+        .cat { font-size: 13px; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px;}
+
+        /* --- 5. 详情页 --- */
+        #detail { 
+            position: fixed; inset: 0; background: #fff; z-index: 100; 
+            transform: translateY(100%); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
+            overflow-y: auto; 
+        }
+        #detail.active { transform: translateY(0); }
+
+        .d-head { 
+            position: sticky; top: 0; background: rgba(255,255,255,0.98); 
+            padding: 24px 50px; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid #f6f6f6; z-index: 10;
+        }
+
+        .d-content { max-width: 1100px; margin: 60px auto 120px; padding: 0 30px; }
+
+        .d-header-block { text-align: center; margin-bottom: 60px; }
+        .d-big-title { font-size: 32px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.5px; }
+        .d-meta { font-size: 13px; color: #999; text-transform: uppercase; letter-spacing: 1px; }
+
+        .d-media { 
+            width: 100%; border-radius: 4px; margin-bottom: 40px; 
+            display: block; box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
+        }
+
+        .d-text-block { 
+            max-width: 680px; margin: 0 auto 60px; font-size: 15px; 
+            line-height: 1.8; color: var(--text-gray); white-space: pre-wrap; 
+        }
+
+        .close-btn { 
+            width: 44px; height: 44px; border-radius: 50%; 
+            border: 1px solid #eee; background: #fff; cursor: pointer; 
+            font-size: 20px; color: #666; transition: 0.2s;
+        }
+        .close-btn:hover { border-color: #000; color: #000; }
+
+        @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); gap: 40px; } }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; padding: 0 24px; }
+            .intro-section { padding: 0 24px; margin-top: 120px; }
+            nav { padding: 0 24px; } .nav-links { display: none; }
+            .d-head { padding: 20px 24px; } .d-content { padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="brand">HUIYUN XIE</div>
+        <div class="nav-links">
+            <a href="#grid">Works</a>
+            <a href="#intro">Profile</a>
+            <a href="mailto:contact@example.com">Contact</a>
+        </div>
+    </nav>
+
+    <section class="intro-section" id="intro">
+        <h1 class="intro-title">
+            Exploring the boundaries between <br>
+            <span style="color: var(--text-light);">Traditional Calligraphy</span> & Generative AI.
+        </h1>
+        <p class="intro-desc">
+            我是謝慧雲，一名數位藝術創作者，專注於結合書法與 AI 演算法，創造兼具東方氣質與未來感的品牌視覺與產品體驗。
+        </p>
+    </section>
+
+    <div class="grid" id="grid"></div>
+
+    <div id="detail">
+        <div class="d-head">
+            <span style="font-size:12px; color:#999; letter-spacing:1px;">PROJECT DETAIL</span>
+            <button class="close-btn" onclick="closeDetail()">✕</button>
+        </div>
+        <div class="d-content" id="d-content"></div>
+    </div>
+
+    <script>
+        let works = (typeof window.projectData !== 'undefined') ? window.projectData : [];
+
+        // 自动填充演示数据 (如果没有真实数据)
+        if (works.length === 0) {
+            for (let i = 1; i <= 3; i++) {
+                works.push({
+                    title: `演示作品 Project ${i}`,
+                    category: "DEMO ART",
+                    cover: `https://source.unsplash.com/random/800x600?art&sig=${i}`,
+                    video: "",
+                    desc: "这是演示数据。请运行 start.command 上传你的真实作品。",
+                    images: []
+                });
+            }
+        }
+
+        const grid = document.getElementById('grid');
+        works.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.onclick = () => openDetail(item);
+            const imgSrc = item.cover; 
+            card.innerHTML = `
+                <div class="cover-box"><img src="${imgSrc}" loading="lazy"></div>
+                <div class="title">${item.title}</div>
+                <div class="cat">${item.category}</div>
+            `;
+            grid.appendChild(card);
+        });
+
+        const detailView = document.getElementById('detail');
+        const content = document.getElementById('d-content');
+
+        function openDetail(item) {
+            let html = '';
+
+            html += `
+                <div class="d-header-block">
+                    <div class="d-big-title">${item.title}</div>
+                    <div class="d-meta">${item.category}</div>
+                </div>
+            `;
+
+            if(item.video) {
+                html += `
+                    <video class="d-media" controls autoplay muted loop playsinline>
+                        <source src="${item.video}" type="video/mp4">
+                    </video>
+                `;
+            }
+
+            if(item.desc) {
+                html += `<div class="d-text-block">${item.desc}</div>`;
+            }
+
+            // 封面图作为第一张大图
+            if(item.cover) {
+                 html += `<img class="d-media" src="${item.cover}" loading="lazy">`;
+            }
+
+            // 其他插图
+            if(item.images && item.images.length > 0) {
+                item.images.forEach(img => {
+                    if(img !== item.cover) {
+                        html += `<img class="d-media" src="${img}" loading="lazy">`;
+                    }
+                });
+            }
+
+            content.innerHTML = html;
+            detailView.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDetail() {
+            detailView.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            setTimeout(() => { content.innerHTML = ''; }, 600);
+        }
+    </script>
+</body>
+</html>
