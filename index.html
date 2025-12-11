@@ -6,6 +6,8 @@
     
     <title>謝慧雲 | Huiyun Xie - 数字艺术与书法作品集 (Digital Art & Calligraphy)</title>
     
+    <meta name="google-site-verification" content="j853D6U9cz0jEL1wDj9UtigOrirweT673IljCiiDhUs" />
+    
     <meta name="description" content="谢慧云 (Huiyun Xie) 的个人作品集网站。专注探索传统书法与生成式 AI (Generative AI) 的结合，展示品牌视觉、产品包装与数字艺术创作。">
     
     <meta name="keywords" content="谢慧云, 謝慧雲, Huiyun Xie, 书法设计, AI艺术, 生成式AI, 包装设计, 品牌设计, Portfolio">
@@ -27,7 +29,6 @@
     }
     </script>
     <script src="data.js"></script> 
-    
     <style>
         /* --- 1. 基础设定 --- */
         :root { 
@@ -225,12 +226,10 @@
                 html += `<div class="d-text-block">${item.desc}</div>`;
             }
 
-            // 封面图作为第一张大图
             if(item.cover) {
                  html += `<img class="d-media" src="${item.cover}" loading="lazy">`;
             }
 
-            // 其他插图
             if(item.images && item.images.length > 0) {
                 item.images.forEach(img => {
                     if(img !== item.cover) {
