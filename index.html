@@ -55,7 +55,7 @@
         .title { font-weight: 600; font-size: 17px; margin-bottom: 6px; color: #333; }
         .cat { font-size: 13px; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px;}
 
-        /* --- 5. 详情页 & 视频自适应修正 --- */
+        /* --- 5. 详情页布局 --- */
         #detail { 
             position: fixed; inset: 0; background: #fff; z-index: 100; 
             transform: translateY(100%); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
@@ -74,16 +74,31 @@
         .d-big-title { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
         .d-meta { font-size: 13px; color: #999; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* === 核心修改：视频/图片自适应样式 === */
-        .d-media { 
-            width: 100%; 
-            height: auto;           /* 高度自动，防止拉伸 */
-            max-height: 90vh;       /* 防止竖屏视频太长占满屏幕 */
-            object-fit: contain;    /* 保证内容完整显示 */
-            border-radius: 4px; 
-            margin-bottom: 40px; 
-            display: block; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03); 
+        /* === 核心修改：媒体资源样式 === */
+        
+        /* 1. 图片通用样式：宽度撑满，高度自动 */
+        img.d-media {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        /* 2. 视频专用样式：智能自适应 */
+        video.d-media {
+            width: auto;            /* 关键：允许宽度收缩 */
+            height: auto;           /* 关键：允许高度收缩 */
+            max-width: 100%;        /* 限制：最宽不能超过屏幕/容器 */
+            max-height: 85vh;       /* 限制：最高不能超过屏幕高度的85%（防止竖屏视频过大） */
+            
+            display: block;
+            margin: 0 auto 40px;    /* 居中显示 */
+            
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            background: #000;       /* 视频加载前的背景色 */
         }
 
         .d-text-block { max-width: 680px; margin: 0 auto 60px; font-size: 15px; line-height: 1.8; color: var(--text-gray); white-space: pre-wrap; }
@@ -97,8 +112,9 @@
             .intro-section { padding: 0 24px; margin-top: 120px; }
             nav { padding: 0 24px; } .nav-links { display: none; }
             .d-head { padding: 20px 24px; } .d-content { padding: 0 20px; }
-            /* 手机端取消最大高度限制，体验更好 */
-            .d-media { max-height: none; } 
+            
+            /* 手机上允许视频稍微高一点，但依然限制不溢出屏幕 */
+            video.d-media { max-height: 80vh; width: 100%; object-fit: cover; } 
         }
     </style>
 </head>
@@ -130,12 +146,10 @@
     </div>
 
     <script>
-        // 读取 data.js 中的数据
         let works = (typeof window.projectData !== 'undefined') ? window.projectData : [];
 
-        // 渲染网格
         const grid = document.getElementById('grid');
-        works.forEach((item, index) => {
+        works.forEach((item) => {
             const card = document.createElement('div');
             card.className = 'card';
             card.onclick = () => openDetail(item);
@@ -158,7 +172,7 @@
                 </div>
             `;
 
-            // 视频渲染逻辑优化
+            // 视频渲染逻辑
             if(item.video) {
                 html += `
                     <video class="d-media" controls autoplay muted loop playsinline>
@@ -170,7 +184,7 @@
 
             if(item.desc) html += `<div class="d-text-block">${item.desc}</div>`;
 
-            // 图片渲染
+            // 图片渲染（首图+多图）
             if(item.cover) html += `<img class="d-media" src="${item.cover}" loading="lazy">`;
             if(item.images && item.images.length > 0) {
                 item.images.forEach(img => {
