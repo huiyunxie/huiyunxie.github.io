@@ -1,20 +1,11 @@
 window.projectData = [
     {
-        "id": 1765557369,
-        "title": "竹露-矿泉水",
-        "category": "矿泉水",
-        "desc": "「竹」以筆畫擬態竹葉形，「露」用筆勢呈現水的流動，如竹林山水入石間\n\n「竹」字的處理上，筆畫被刻意「葉化」：提按之間形成尖、薄、挺的葉尖語彙，長筆像葉片延伸，短筆像新芽側出；筆鋒的收束乾淨俐落，保留竹葉的利落與節制。字勢因此帶有向上、向外的生長感，像竹林在風中微微展開，既有動勢，也維持高度克制。\n\n「露」則以另一種節奏完成對比：筆勢更連續、更圓轉，讓線條像水在石面上行走——有聚、有散、有回流。墨色的濃淡與飛白被保留下來，像水面光澤與流速的變化；轉折處不做僵硬的停頓，而讓筆畫自然滑過，讓「露」字成為整體視覺裡的“水聲”。",
-        "cover": "images/竹露-产品概念图.jpg",
-        "video": "images/竹露-产品概念视频.mp4",
-        "images": []
-    },
-    {
-        "id": 1765432297,
-        "title": "黃金桂",
-        "category": "茶叶包装",
-        "desc": "《黃金桂》是一個從三個字開始的包裝實驗。\n創作先以手寫書法完成多個版本的「黃金桂」，在筆畫的開合、留白與重心上反覆推敲，選出既克制又帶一點流動感的字形，再將這一版字標作為視覺核心，送入 AI 演算法中生成不同材質與構圖的包裝草圖。最終呈現刻意壓低畫面裝飾性，只保留冷暖適中的金屬細節、少量資訊文字與大面積留白，讓視線自然停留在書法本身。",
-        "cover": "images/高端黄金桂茶包装视觉系统.png",
-        "video": "",
+        "id": 1766553049,
+        "title": "雲-YUN",
+        "category": "生成式艺术、交互设计、物理模拟",
+        "desc": "该作品是一场关于“文字生命力”的数字实验。试图打破传统书法与图像的静态边界，通过九种截然不同的生成式算法，重塑了文字在虚拟空间中的存在形式。\n\n从赛博朋克的数据故障，到水墨丹青的液态张力；从植物破土的有机生长，到时光沙漏的熵增坍缩。项目运用了流体场、WebGL 光影渲染及粒子物理引擎，将古老的东方符号解构为无数个可交互的微粒。在这里，用户不再是静态文字旁观者，而是掌控风、雨、引力与时间的造物主。通过鼠标的交互，文字在秩序与混沌、具象与抽象之间反复涅槃，展现了技术理性与艺术感性的极致融合。\n\nEnglish Description\nThis project is a digital experiment exploring the \"vitality of typography.\" By breaking the static boundaries of traditional calligraphy and imagery, we reshape the existence of characters in virtual space through nine distinct generative algorithms.\n\nFrom cyberpunk data glitches to the fluid tension of ink wash; from the organic evolution of botanical growth to the entropic collapse of the time hourglass. The project utilizes flow fields, WebGL rendering, and particle physics engines to deconstruct ancient Eastern symbols into countless interactive particles. Here, the user is no longer a spectator but a creator controlling wind, gravity, and time. Through interaction, the text undergoes a digital nirvana, oscillating between order and chaos, the concrete and the abstract, demonstrating the ultimate fusion of technological logic and artistic sensibility.",
+        "cover": "images/25119-molab-书法可视化-封面.jpg",
+        "video": "images/251219-molab-书法可视化.mp4",
         "images": []
     }
 ];
